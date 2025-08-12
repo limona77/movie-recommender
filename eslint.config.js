@@ -20,7 +20,6 @@ export default tseslint.config([
       globals: globals.browser,
     },
     rules: {
-      'import/no-named-as-default-member': 0,
       'import/order': [
         'error',
         {
