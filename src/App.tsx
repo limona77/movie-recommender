@@ -1,7 +1,7 @@
-import Header from './components/Header';
+import ImageGallery from './ImageGallery';
 
 function App() {
-  return <Header />;
+  return <ImageGallery />;
 }
 
 export default App;
