@@ -53,6 +53,9 @@ def recommend(movie_title: str, method: str = "count"):
         })
     return recommended
 
+# uvicorn app:app --reload --host 127.0.0.1 --port 8000
+
+
 
 # from fastapi import FastAPI
 # import pickle
