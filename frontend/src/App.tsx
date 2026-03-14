@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 import axios from "axios";
 import { Loader2, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -9,6 +10,18 @@ interface Movie {
   title: string;
   poster: string | null;
   score: number;
+}
+
+function MovieCardSkeleton() {
+  return (
+    <Card className="overflow-hidden">
+      <Skeleton className="w-full h-48" />
+      <CardContent className="p-3 flex flex-col gap-2">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-3 w-2/3" />
+      </CardContent>
+    </Card>
+  );
 }
 
 function App() {
@@ -90,8 +103,17 @@ function App() {
         {/* Ошибка */}
         {error && <p className="text-destructive text-sm">{error}</p>}
 
+        {/* Скелетоны при загрузке */}
+        {loading && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 w-full max-w-4xl">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <MovieCardSkeleton key={i} />
+            ))}
+          </div>
+        )}
+
         {/* Карточки */}
-        {movies.length > 0 && (
+        {!loading && movies.length > 0 && (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 w-full max-w-4xl">
             {movies.map((movie) => (
               <Card key={movie.title} className="overflow-hidden">
