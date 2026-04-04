@@ -132,9 +132,6 @@ function App() {
                   <p className="text-sm font-medium text-foreground leading-tight">
                     {movie.title}
                   </p>
-                  <p className="text-xs text-muted-foreground">
-                    Сходство: {(movie.score * 100).toFixed(1)}%
-                  </p>
                 </CardContent>
               </Card>
             ))}
