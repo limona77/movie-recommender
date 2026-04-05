@@ -5,7 +5,6 @@ import requests
 
 app = FastAPI()
 
-# ✅ CORS — чтобы React мог обращаться к бекенду
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -30,7 +29,6 @@ def fetch_poster(movie_id):
 def get_movies():
     return movies[['id', 'title']].to_dict(orient="records")
 
-# ✅ Добавили параметр method
 @app.get("/recommend/{movie_title}")
 def recommend(movie_title: str, method: str = "count"):
     if movie_title not in movies['title'].values:
